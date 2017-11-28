@@ -1,5 +1,5 @@
 {
-    "name": "mate-code/floating-label-form",
+    "name": "mate-code/animated-label-form",
     "type": "component",
     "description": "Animated floating labels for Bootstrap forms",
     "keywords": ["bootstrap", "php", "html", "css", "yii2"],
