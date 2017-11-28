@@ -1,0 +1,12 @@
+{
+    "name": "mate-code/floating-label-form",
+    "description": "Animated floating labels for Bootstrap forms",
+    "keywords": ["bootstrap", "php", "html", "css", "yii2"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Marius Teller",
+            "email": "marius.teller@mail.de"
+        }
+    ]
+}
