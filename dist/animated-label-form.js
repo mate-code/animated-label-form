@@ -17,10 +17,26 @@ function setupAnimatedFormLabels(contentElement) {
     contentElement.find("select").on("select2:opening", function () {
         $(this).parent().find("label").addClass("move");
     });
-    contentElement.find("select").on("select2:closingselect2:select select2:unselect", function () {
+    contentElement.find("select").on("select2:close select2:select select2:unselect change", function () {
         var choices = $(this).parent().find(".select2-selection__choice");
         var search = $(this).parent().find(".select2-search__field");
-        if(choices.length === 0 && search.val().length === 0) {
+        if(choices.length !== 0 || search.length !== 0) {
+            if(choices.length === 0 && search.val().length === 0) {
+                $(this).parent().find("label").removeClass("move");
+            } else {
+                $(this).parent().find("label").addClass("move");
+            }
+        } else {
+            if(!$(this).val().length) {
+                $(this).parent().find("label").removeClass("move");
+            } else {
+                $(this).parent().find("label").addClass("move");
+            }
+        }
+    });
+
+    contentElement.find('.date-picker input').on("changeDate", function () {
+        if(!$(this).val().length) {
             $(this).parent().find("label").removeClass("move");
         } else {
             $(this).parent().find("label").addClass("move");
@@ -53,11 +69,13 @@ function setupAnimatedFormLabels(contentElement) {
         toggleLabelForInputs($(this));
     });
 
-    contentElement.find("form.animated-label").css("visibility", "visible");
+    contentElement.find(".animated-label").css("visibility", "visible");
 }
 
-$(document).ready(function () {
-
-    setupAnimatedFormLabels($("body"));
-
-});
+if(typeof contentSetupFunctions !== "undefined") {
+    contentSetupFunctions.push(setupAnimatedFormLabels);
+} else {
+    $(document).ready(function () {
+        setupAnimatedFormLabels($("body"));
+    });
+}

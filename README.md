@@ -19,13 +19,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require mate-code/floating-label-form
+php composer.phar require mate-code/animated-label-form
 ```
 
 or add
 
 ```
-"mate-code/floating-label-form": "~1.0"
+"mate-code/animated-label-form": "~1.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -36,9 +36,9 @@ Usage
 Add inside your `<head>` tag
 
 ```html
-<link href="/path/to/floating-label-form.css" rel="stylesheet">
+<link href="/path/to/animated-label-form.css" rel="stylesheet">
 <script src="/path/to/jQuery.js"></script>
-<script src="/path/to/floating-label-form.js"></script>
+<script src="/path/to/animated-label-form.js"></script>
 ```
 
 And build your form like this:

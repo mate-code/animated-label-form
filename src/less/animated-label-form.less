@@ -1,12 +1,20 @@
-@import "../bootstrap/variables.less";
-@import "../variables.less";
-@import "../mixins";
+@import "variables.less";
+@import "scrollbar.less";
 
 @form-text-color: @text-color;
 @form-color-primary: @brand-primary;
-@form-background-color: #000;
-@form-background-highlight: darken(@text-color, 30%);
+@form-background-color: #FFF;
+@form-background-highlight: darken(@form-background-color, 10%);
 @form-border-radius: 0;
+@form-input-height: 42px;
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -ms-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
 
 .animated-label {
   visibility: hidden;
@@ -16,7 +24,7 @@
     margin-top: 0 !important;
   }
   .btn {
-    height: 42px;
+    height: @form-input-height;
     border-radius: @form-border-radius;
   }
 }
@@ -29,6 +37,7 @@
   margin-bottom: 33px;
 
   input[type='text'],
+  input[type='password'],
   .select2-selection,
   select,
   textarea {
@@ -50,10 +59,10 @@
   input[type='text'],
   input[type='password'],
   select {
-    height: 42px;
+    height: @form-input-height;
   }
   .select2-selection {
-    min-height: 42px;
+    min-height: @form-input-height;
   }
   select {
     -webkit-appearance: none;
@@ -72,7 +81,7 @@
 
   .help-block {
     position: absolute;
-    top: 42px;
+    top: @form-input-height;
     left: 12px;
     margin: 4px 0;
   }
@@ -151,6 +160,27 @@
 
 }
 
+tr.animated-label  {
+  th, td {
+    vertical-align: top;
+    padding: 0!important;
+  }
+  .form-group {
+    margin-bottom: 0;
+    input[type='text'],
+    .select2-selection,
+    select,
+    textarea {
+      margin-top: 0;
+      border: 0;
+    }
+    textarea {
+      height: @form-input-height;
+    }
+  }
+}
+
+
 /* Select2 styling */
 
 .select2-container.select2-container--krajee {
@@ -220,6 +250,7 @@
     .select2-selection__choice__remove {
       color: lighten(@form-text-color, 20%);
       text-shadow: 0 1px 0 lighten(@form-text-color, 15%);
+      cursor: pointer;
     }
   }
 
@@ -233,7 +264,7 @@
 }
 
 .datetimepicker.dropdown-menu {
-  background: #000;
+  background: @form-background-color;
   border: 1px solid @form-color-primary;
   span.active {
     background: darken(@form-color-primary, 30%)!important;
@@ -241,7 +272,7 @@
     color: @form-color-primary!important;
   }
   span:hover, th.switch:hover, th.prev:hover, th.next:hover, th.today:hover {
-    background: #000!important;
+    background: @form-background-highlight!important;
     color: lighten(@form-color-primary, 25%)!important;
   }
   &:after {
