@@ -44,7 +44,7 @@ function setupAnimatedFormLabels(contentElement) {
     });
 
     contentElement.find('textarea').each(function () {
-        if($(this).val() !== "") {
+        if($(this).val() !== "" || $(this).attr('placeholder') !== "") {
             var label = $(this).parent().children("label");
             label.addClass("no-transition");
             $(this).addClass("has-content").delay(500, function () {
@@ -54,7 +54,7 @@ function setupAnimatedFormLabels(contentElement) {
     });
 
     function toggleLabelForInputs(element) {
-        if(element.val() === null || element.val().length === 0) {
+        if(element.val() === null || element.val().length === 0 && "" === element.attr('placeholder')) {
             element.removeClass("has-content")
                 .removeAttr("value");
         } else {
